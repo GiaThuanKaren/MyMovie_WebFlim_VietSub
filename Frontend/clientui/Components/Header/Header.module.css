@@ -1,0 +1,4 @@
+.MainContainerHeader{
+    height: var(--heigh-header);
+    background-color: rgb(186, 140, 228);
+}
