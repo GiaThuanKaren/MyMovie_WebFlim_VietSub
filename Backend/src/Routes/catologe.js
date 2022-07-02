@@ -13,8 +13,12 @@ const FitlerCatologeCrawl = function (req, res) {
         let resutlGot = []
         $(ele).find("option").each((idx,elein)=>{
             // i++
-            console.log($(elein).attr("value"))
-            resutlGot.push($(elein).attr("value"))
+            console.log($(elein).text())
+            const obj ={
+              name:$(elein).text(),
+              href:$(elein).attr("value")
+            }
+            resutlGot.push(obj)
             
         })
         Result.push(resutlGot)

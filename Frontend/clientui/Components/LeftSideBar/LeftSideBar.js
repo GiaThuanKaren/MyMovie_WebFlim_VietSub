@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import style from "./LeftSideBar.module.css";
 function LeftSideBar() {
   const { Catologe } = useSelector((state) => state);
-  console.log("data", Catologe);
+  // console.log("data", Catologe);
   return (
     <Grid item lg={3} md={3}>
       <div className="hidden-sm hidden-xs">
