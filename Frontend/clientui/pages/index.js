@@ -9,10 +9,11 @@ import { useDispatch,useSelector} from "react-redux"
 import {action} from "../Redux/Store/Store"
 import { useEffect } from "react";
 const axios = require('axios').default;
-export default function Home({ data }) {
+export default function Home({ data ,movielist}) {
   const dispatch = useDispatch();
   const {Catologe} = useSelector(state=>state);
   dispatch(action.SetCatologe(data.data))
+  dispatch(action.SetCurMovieList(movielist))
   console.log(Catologe,18)
   return (
     <>

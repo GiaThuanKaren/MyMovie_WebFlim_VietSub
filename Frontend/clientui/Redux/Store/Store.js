@@ -4,6 +4,7 @@ const GlobalState=createSlice({
     initialState:{
         Movie:[],
         Catologe:[],
+        CurListMovie:[]
     },
     reducers:{
         SetNewMovie(state,action){
@@ -11,6 +12,9 @@ const GlobalState=createSlice({
         },
         SetCatologe(state,action){
             state.Catologe=action.payload
+        },
+        SetCurMovieList(state,action){
+            state.CurListMovie= action.payload
         }
     }
     
