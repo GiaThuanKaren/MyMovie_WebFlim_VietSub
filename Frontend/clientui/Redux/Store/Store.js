@@ -3,10 +3,14 @@ const GlobalState=createSlice({
     name:"globalState",
     initialState:{
         Movie:[],
+        Catologe:[],
     },
     reducers:{
         SetNewMovie(state,action){
             state.Movie = action.payload
+        },
+        SetCatologe(state,action){
+            state.Catologe=action.payload
         }
     }
     

@@ -1,18 +1,25 @@
 import Head from "next/head";
 import Image from "next/image";
-
 import { Grid } from "@mui/material";
 import Link from "next/link";
 import Header from "../Components/Header/Header";
 import LeftSideBar from "../Components/LeftSideBar/LeftSideBar";
 import RightSideBar from "../Components/RightSideBar/RightSideBar";
+import { useDispatch,useSelector} from "react-redux"
+import {action} from "../Redux/Store/Store"
+import { useEffect } from "react";
+const axios = require('axios').default;
 export default function Home({ data }) {
+  const dispatch = useDispatch();
+  const {Catologe} = useSelector(state=>state);
+  dispatch(action.SetCatologe(data.data))
+  console.log(Catologe,18)
   return (
     <>
       <div>
         <Header />
         <Grid container spacing={3}>
-          <LeftSideBar result={data} />
+          <LeftSideBar />
           <RightSideBar />
         </Grid>
       </div>
@@ -20,13 +27,16 @@ export default function Home({ data }) {
   );
 }
 
+
 export async function getStaticProps() {
-  let respone = await fetch(`http://localhost:5000/fliterlist`);
-  let result = await respone.json();
-  console.log(result);
+  // let result = await axios.get(`http://localhost:5000/fliterlist`);
+  // console.log(result);
+  let result =await Promise.all([axios.get(`http://localhost:5000/fliterlist`),axios.get(`http://localhost:5000/movie/lastest?page=1`)])
+  // console.log(result[0].data,result[1].data)
   return {
     props: {
-      data: result,
+      data: result[0].data,
+      movielist:result[1].data
     },
   };
 }
