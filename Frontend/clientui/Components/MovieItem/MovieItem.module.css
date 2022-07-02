@@ -1,0 +1,12 @@
+.MovieItemContainer{
+    height: 300px;
+    overflow: hidden;
+}
+
+.ImageMovieItem{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 200px;
+
+}
