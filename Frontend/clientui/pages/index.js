@@ -11,11 +11,11 @@ import { useEffect } from "react";
 const axios = require("axios").default;
 export default function Home({ data, movielist }) {
   const dispatch = useDispatch();
-  const { Catologe } = useSelector((state) => state);
+  // const { Catologe } = useSelector((state) => state);
   dispatch(action.SetCatologe(data.data));
   // dispatch(action.SetCurMovieList(movielist))
   // console.log(Catologe,18)
-  useEffect(() => {}, []);
+  
   return (
     <>
       <div>
@@ -36,7 +36,7 @@ export async function getStaticProps(context) {
   // console.log(result);
   let result = await Promise.all([
     axios.get(`http://localhost:5000/fliterlist`),
-    axios.get(`http://localhost:5000/movie/lastest?page=1`),
+    axios.get(`http://localhost:5000/movie/list?ds=phim-bo&page=1`),
   ]);
   // console.log(result[0].data,result[1].data)
   return {

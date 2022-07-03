@@ -5,17 +5,26 @@ const GlobalState=createSlice({
         Movie:[],
         Catologe:[],
         CurListMovie:[],
-        IdMovie:null
+        IdMovie:null,
+        CurCatologe:"",
+        CurPage:1
     },
     reducers:{
         SetNewMovie(state,action){
             state.Movie = action.payload
         },
         SetCatologe(state,action){
+            console.log("Set catologe")
             state.Catologe=action.payload
         },
         SetCurMovieList(state,action){
             state.CurListMovie= action.payload
+        },
+        SetCurCatologe(state,action){
+            state.CurCatologe=action.payload
+        },
+        SetCurPage(state,action){
+            state.CurPage=action.payload
         }
     }
     

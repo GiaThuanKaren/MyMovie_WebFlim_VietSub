@@ -13,23 +13,23 @@ import MovieItem from "../MovieItem/MovieItem";
 import { useEffect, useState } from "react";
 function RightSideBar({ itemsArr }) {
   const router = useRouter();
-  console.log(itemsArr, "------");
+  console.log(router.pathname, "---16---");
+  // console.log(itemsArr, "------");
   // console.log();
   const { page } = router.query;
-  const { items, pagination } = itemsArr;
-  // console.log(items);
+  const { items, params, type_list } = itemsArr;
+  console.log("Type   ", type_list);
   // console.log(items, 9);
-  const [properties, SetProperties] = useState({
+  const [properties, SetProperties] = useState(() => {
     // đưa vào biến này , để chuyển trang chung 1 biến items
-    Curpage: 1,
-    ListMovie: items,
-    PageNum:pagination
+    console.log("get first");
+    return { Curpage: 1, ListMovie: items, PageNum: params.pagination };
   });
-  console.log(properties);
+  // console.log(properties);
   useEffect(() => {
     async function CallApi() {
       let respone = await axios.get(
-        `http://localhost:5000/movie/lastest?page=${properties.Curpage}`
+        `http://localhost:5000/movie/list?ds=${type_list}&page=${properties.Curpage}`
       );
       SetProperties({
         ...properties,
@@ -40,7 +40,8 @@ function RightSideBar({ itemsArr }) {
     window.scrollTo(0, 0);
   }, [properties.Curpage]);
   const ChoosePage = function (event, value) {
-    console.log(value);
+    // console.log(value);
+    // router.push(`/`)
     SetProperties({
       ...properties,
       Curpage: value,
@@ -49,8 +50,9 @@ function RightSideBar({ itemsArr }) {
   return (
     <Grid item lg={9} md={9} sm={12}>
       <Grid container spacing={3}>
-        {properties.ListMovie && properties.ListMovie.length > 0
-          ? properties.ListMovie.map((item, idx) => {
+        {properties.Curpage == 1
+          ? items.map((item, idx) => {
+              console.log(item, 56);
               return (
                 <MovieItem
                   key={item._id}
@@ -62,13 +64,25 @@ function RightSideBar({ itemsArr }) {
                 />
               );
             })
-          : null}
+          : properties.ListMovie.map((item, idx) => {
+              console.log("below");
+              return ( 
+                <MovieItem
+                  key={item._id}
+                  year={item.year}
+                  slug={item.slug}
+                  OriginalName={item.origin_name}
+                  id={item._id}
+                  title={item.name}
+                />
+              );
+            })}
         {/* MovieItems */}
       </Grid>
       <Stack spacing={2}>
         <Grid container justifyContent={"center"}>
           <Pagination
-            count={properties.PageNum.totalPages}
+            count={620}
             onChange={ChoosePage}
             defaultPage={1}
             boundaryCount={2}
