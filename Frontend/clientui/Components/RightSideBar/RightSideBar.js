@@ -4,19 +4,22 @@ import Pagination from "@mui/material/Pagination";
 import Link from "next/link";
 import Stack from "@mui/material/Stack";
 import { useRouter } from "next/router";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
 // import { Link, MemoryRouter, Route, Routes, useLocation } from 'react-router-dom';
 import PaginationItem from "@mui/material/PaginationItem";
 import MovieItem from "../MovieItem/MovieItem";
 import { useEffect, useState } from "react";
+import { action } from "../../Redux/Store/Store";
 function RightSideBar({ itemsArr }) {
   const router = useRouter();
+  const {CurPage} = useSelector(state=> state);
   console.log(router.pathname, "---16---");
   // console.log(itemsArr, "------");
   // console.log();
   const { page } = router.query;
+  const dispatch = useDispatch();
   const { items, params, type_list } = itemsArr;
   console.log("Type   ", type_list);
   // console.log(items, 9);
@@ -42,15 +45,17 @@ function RightSideBar({ itemsArr }) {
   const ChoosePage = function (event, value) {
     // console.log(value);
     // router.push(`/`)
+    dispatch(action.SetCurPage(value))
     SetProperties({
       ...properties,
       Curpage: value,
     });
   };
+  console.log(CurPage)
   return (
     <Grid item lg={9} md={9} sm={12}>
       <Grid container spacing={3}>
-        {properties.Curpage == 1
+        {CurPage == 1
           ? items.map((item, idx) => {
               console.log(item, 56);
               return (
@@ -66,7 +71,7 @@ function RightSideBar({ itemsArr }) {
             })
           : properties.ListMovie.map((item, idx) => {
               console.log("below");
-              return ( 
+              return (
                 <MovieItem
                   key={item._id}
                   year={item.year}
@@ -82,6 +87,7 @@ function RightSideBar({ itemsArr }) {
       <Stack spacing={2}>
         <Grid container justifyContent={"center"}>
           <Pagination
+            page={properties.Curpage == 1 ? CurPage : properties.Curpage }
             count={620}
             onChange={ChoosePage}
             defaultPage={1}
