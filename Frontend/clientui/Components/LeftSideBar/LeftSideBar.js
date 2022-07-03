@@ -11,7 +11,7 @@ function LeftSideBar() {
           {Catologe.length > 0 && Catologe
             ? Catologe[1].map((item, index) => {
                 return (
-                  <li>
+                  <li key={item.name}>
                     <Link href={item.href ? item.href : "/"}>
                       
                         <p>{item.name ? item.name : ""}</p>
