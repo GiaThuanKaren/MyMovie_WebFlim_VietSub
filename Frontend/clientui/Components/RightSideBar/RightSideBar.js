@@ -16,7 +16,7 @@ function RightSideBar({ itemsArr }) {
   const router = useRouter();
   const {CurPage} = useSelector(state=> state);
   console.log(router.pathname, "---16---");
-  // console.log(itemsArr, "------");
+  console.log(itemsArr, "------");
   // console.log();
   const { page } = router.query;
   const dispatch = useDispatch();
@@ -34,12 +34,13 @@ function RightSideBar({ itemsArr }) {
       let respone = await axios.get(
         `http://localhost:5000/movie/list?ds=${type_list}&page=${properties.Curpage}`
       );
+      console.log("Call Api")
       SetProperties({
         ...properties,
         ListMovie: respone.data.items,
       });
     }
-    CallApi();
+    if (CurPage != 1)CallApi();
     window.scrollTo(0, 0);
   }, [properties.Curpage]);
   const ChoosePage = function (event, value) {
@@ -57,7 +58,7 @@ function RightSideBar({ itemsArr }) {
       <Grid container spacing={3}>
         {CurPage == 1
           ? items.map((item, idx) => {
-              console.log(item, 56);
+              {/* console.log(item, 56); */}
               return (
                 <MovieItem
                   key={item._id}
@@ -70,7 +71,7 @@ function RightSideBar({ itemsArr }) {
               );
             })
           : properties.ListMovie.map((item, idx) => {
-              console.log("below");
+              {/* console.log("below"); */}
               return (
                 <MovieItem
                   key={item._id}

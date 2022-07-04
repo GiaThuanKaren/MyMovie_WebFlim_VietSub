@@ -4,10 +4,10 @@ import { useSelector, useDispatch } from "react-redux";
 import Link from "next/link";
 import style from "./LeftSideBar.module.css";
 import { action } from "../../Redux/Store/Store";
-function LeftSideBar() {
+function LeftSideBar({ListCatologe}) {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { Catologe } = useSelector((state) => state);
+  // const { Catologe } = useSelector((state) => state);
   // console.log("data", Catologe);
   const Direct = function (end) {
     router.push(`/${end}`);
@@ -16,8 +16,8 @@ function LeftSideBar() {
     <Grid item lg={3} md={3}>
       <div className="hidden-sm hidden-xs">
         <ul>
-          {Catologe.length > 0 && Catologe
-            ? Catologe[1].map((item, index) => {
+          {ListCatologe.length > 0 && ListCatologe
+            ? ListCatologe[1].map((item, index) => {
                 return (
                   <li
                     className={`${style.CatologeMovieItem}`}

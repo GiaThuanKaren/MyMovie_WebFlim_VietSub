@@ -16,6 +16,9 @@ import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useDispatch, useSelector } from "react-redux";
+import { action } from "../../Redux/Store/Store";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -58,6 +61,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function PrimarySearchAppBar() {
+  const router = useRouter();
+  const dispacth = useDispatch();
+  const { TabIsClose} = useSelector(state=> state);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -160,13 +166,19 @@ export default function PrimarySearchAppBar() {
       <AppBar position="static">
         <Toolbar>
           <IconButton
+            onClick={() => {
+              console.log("click");
+              dispacth(action.SetOpenTab(!TabIsClose))
+            }}
             size="large"
             edge="start"
             color="inherit"
             aria-label="open drawer"
             sx={{ mr: 2 }}
           >
-            <MenuIcon />
+            <div className="hidden-xl hidden-lg hidden-md">
+              <MenuIcon />
+            </div>
           </IconButton>
           <Link href={"/"}>
             <Typography
@@ -183,6 +195,14 @@ export default function PrimarySearchAppBar() {
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
+              onKeyUp={(e) => {
+                if (e.key === "Enter") {
+                  // router.push(`/`)
+                }
+              }}
+              onChange={(e) => {
+                // console.log(e.target.value);
+              }}
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
             />

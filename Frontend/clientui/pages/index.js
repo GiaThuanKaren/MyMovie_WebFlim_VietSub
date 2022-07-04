@@ -11,17 +11,18 @@ import { useEffect } from "react";
 const axios = require("axios").default;
 export default function Home({ data, movielist }) {
   const dispatch = useDispatch();
-  // const { Catologe } = useSelector((state) => state);
-  dispatch(action.SetCatologe(data.data));
+  console.log(data)
+  // const { Catologe, TabIsClose } = useSelector((state) => state);
+  // dispatch(action.SetCatologe(data.data));
   // dispatch(action.SetCurMovieList(movielist))
   // console.log(Catologe,18)
-  
+
   return (
     <>
-      <div >
+      <div>
         <Header />
         <Grid container spacing={3}>
-          <LeftSideBar />
+          <LeftSideBar ListCatologe={data.data} />
           <RightSideBar itemsArr={movielist} />
         </Grid>
       </div>
@@ -43,7 +44,7 @@ export async function getStaticProps(context) {
     props: {
       data: result[0].data,
       movielist: result[1].data,
-      startPage:1
+      startPage: 1,
     },
   };
 }

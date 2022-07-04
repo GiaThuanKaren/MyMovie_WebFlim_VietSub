@@ -32,7 +32,7 @@ a {
   }
 }
 
-@media (min-width:90px ) and (max-width:1199px){
+@media (min-width:900px ) and (max-width:1199px){
   .hidden-md{
       display: none;
   }

@@ -7,7 +7,8 @@ const GlobalState=createSlice({
         CurListMovie:[],
         IdMovie:null,
         CurCatologe:"",
-        CurPage:1
+        CurPage:1,
+        TabIsClose:true
     },
     reducers:{
         SetNewMovie(state,action){
@@ -25,6 +26,9 @@ const GlobalState=createSlice({
         },
         SetCurPage(state,action){
             state.CurPage=action.payload
+        },
+        SetOpenTab(state,action){
+            state.TabIsClose= action.payload
         }
     }
     
