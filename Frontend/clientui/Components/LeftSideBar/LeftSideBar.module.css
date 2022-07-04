@@ -1,0 +1,12 @@
+.CatologeMovieItem{
+    height: 30px;
+    width: 100%;
+    font-weight: 500;
+    padding: 2px 5px;
+    transition: all ease-in-out 400ms;
+}
+.CatologeMovieItem:hover{
+    cursor: pointer;
+    color: rgb(104, 104, 235);
+    transform: translateX(3px);
+}

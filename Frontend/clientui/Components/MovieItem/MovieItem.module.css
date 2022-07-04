@@ -1,6 +1,7 @@
 .MovieItemContainer{
     height: 300px;
     overflow: hidden;
+    border-radius: 10px;
 }
 
 .ImageMovieItem{

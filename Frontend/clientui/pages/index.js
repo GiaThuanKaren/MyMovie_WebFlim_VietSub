@@ -18,7 +18,7 @@ export default function Home({ data, movielist }) {
   
   return (
     <>
-      <div>
+      <div >
         <Header />
         <Grid container spacing={3}>
           <LeftSideBar />
@@ -43,6 +43,7 @@ export async function getStaticProps(context) {
     props: {
       data: result[0].data,
       movielist: result[1].data,
+      startPage:1
     },
   };
 }

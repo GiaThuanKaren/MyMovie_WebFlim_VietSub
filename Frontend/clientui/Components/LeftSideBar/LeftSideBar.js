@@ -20,6 +20,7 @@ function LeftSideBar() {
             ? Catologe[1].map((item, index) => {
                 return (
                   <li
+                    className={`${style.CatologeMovieItem}`}
                     onClick={() => {
                       dispatch(action.SetCurPage(1));
 

@@ -8,7 +8,7 @@ function MovieItem({ slug, title, id, year, OriginalName }) {
     router.push(`/movie/${slugmovie}`);
   };
   return (
-    <Grid item lg={3} md={3}>
+    <Grid item lg={3} md={3} sm={4} xs={6}>
       <div
         onClick={() => {
           DirectMovie(slug);
