@@ -11,7 +11,7 @@ import { useEffect } from "react";
 const axios = require("axios").default;
 export default function Home({ data, movielist }) {
   const dispatch = useDispatch();
-  console.log(data)
+  console.log(data,movielist)
   // const { Catologe, TabIsClose } = useSelector((state) => state);
   // dispatch(action.SetCatologe(data.data));
   // dispatch(action.SetCurMovieList(movielist))
@@ -29,6 +29,7 @@ export default function Home({ data, movielist }) {
     </>
   );
 }
+
 
 export async function getStaticProps(context) {
   // const param = new URLSearchParams(location.search).get("page")
@@ -48,3 +49,9 @@ export async function getStaticProps(context) {
     },
   };
 }
+
+
+// const $ = document.querySelector.bind(document);
+
+// const btnSave = $(".")
+// const btnupdate = $("#")
