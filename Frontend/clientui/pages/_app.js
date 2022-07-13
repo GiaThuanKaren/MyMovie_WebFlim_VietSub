@@ -1,8 +1,13 @@
 import "../styles/globals.css";
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import store from "../Redux/Store/Store";
+import { deepmerge } from "@mui/utils";
 import NextNProgress from "nextjs-progressbar";
+import { ThemeProvider, createTheme, Paper } from "@mui/material";
+import MainLayOut from "../Layouts/MainLayOut";
 function MyApp({ Component, pageProps }) {
+  // const { IsLightTheme } = useSelector((state) => state);
+
   return (
     <>
       <NextNProgress
@@ -13,7 +18,11 @@ function MyApp({ Component, pageProps }) {
         showOnShallow={true}
       />
       <Provider store={store}>
-        <Component {...pageProps} />
+        <MainLayOut>
+          <Paper>
+            <Component {...pageProps} />
+          </Paper>
+        </MainLayOut>
       </Provider>
     </>
   );

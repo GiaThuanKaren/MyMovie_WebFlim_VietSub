@@ -1,19 +1,18 @@
-.MovieItemContainer{
-    height: 300px;
-    overflow: hidden;
-    border-radius: 10px;
-    transition: all ease-in-out 400ms;
-    border: 1px solid rgb(239, 239, 239);
+.MovieItemContainer {
+  height: 300px;
+  overflow: hidden;
+  border-radius: 10px;
+  transition: all ease-in-out 400ms;
+  border: 1px solid rgb(239, 239, 239);
 }
 
-.MovieItemContainer:hover{
-
+.MovieItemContainer:hover {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-.ImageMovieItem{
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 200px;
-
+.ImageMovieItem {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 200px;
 }

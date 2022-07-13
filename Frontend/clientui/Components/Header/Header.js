@@ -19,6 +19,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { action } from "../../Redux/Store/Store";
+import CustomizedSwitches from "../IconSwitchTheme/IconSwitchTheme";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -214,9 +215,7 @@ export default function PrimarySearchAppBar() {
               aria-label="show 4 new mails"
               color="inherit"
             >
-              <Badge badgeContent={4} color="error">
-                <MailIcon />
-              </Badge>
+              <CustomizedSwitches />
             </IconButton>
             <IconButton
               size="large"

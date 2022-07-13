@@ -32,8 +32,9 @@ function RightSideBar({ itemsArr }) {
   // console.log(properties);
   useEffect(() => {
     console.log(
-      `http://localhost:5000/movie/list?ds=${type_list}&page=${properties.Curpage}`
-    ,1);
+      `http://localhost:5000/movie/list?ds=${type_list}&page=${properties.Curpage}`,
+      1
+    );
     async function CallApi() {
       try {
         console.log(
@@ -54,7 +55,7 @@ function RightSideBar({ itemsArr }) {
       }
     }
     if (CurPage > 1) CallApi();
-    // window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
   }, [properties.Curpage]);
   const ChoosePage = function (event, value) {
     dispatch(action.SetCurPage(value));

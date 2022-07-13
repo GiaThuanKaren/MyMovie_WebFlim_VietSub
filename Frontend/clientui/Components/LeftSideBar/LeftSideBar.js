@@ -4,8 +4,10 @@ import { useSelector, useDispatch } from "react-redux";
 import Link from "next/link";
 import style from "./LeftSideBar.module.css";
 import { action } from "../../Redux/Store/Store";
+import { Box } from "@mui/system";
 function LeftSideBar({ListCatologe}) {
   const router = useRouter();
+  console.log(router.asPath)
   const dispatch = useDispatch();
   // const { Catologe } = useSelector((state) => state);
   // console.log("data", Catologe);
@@ -13,14 +15,15 @@ function LeftSideBar({ListCatologe}) {
     router.push(`/${end}`);
   };
   return (
-    <Grid item lg={3} md={3}>
+   
+    <Grid  item lg={3} md={3}>
       <div className="hidden-sm hidden-xs">
         <ul>
           {ListCatologe.length > 0 && ListCatologe
             ? ListCatologe[1].map((item, index) => {
                 return (
                   <li
-                    className={`${style.CatologeMovieItem}`}
+                    className={router.asPath === `/${item.href}`?`${style.CatologeMovieItemActive}`: `${style.CatologeMovieItem}`}
                     onClick={() => {
                       dispatch(action.SetCurPage(1));
 

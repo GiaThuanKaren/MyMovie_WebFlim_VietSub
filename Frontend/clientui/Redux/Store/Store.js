@@ -8,7 +8,8 @@ const GlobalState=createSlice({
         IdMovie:null,
         CurCatologe:"",
         CurPage:1,
-        TabIsClose:true
+        TabIsClose:true,
+        IsLightTheme:false
     },
     reducers:{
         SetNewMovie(state,action){
@@ -29,6 +30,9 @@ const GlobalState=createSlice({
         },
         SetOpenTab(state,action){
             state.TabIsClose= action.payload
+        },
+        SetThemeSite(state,action){
+            state.IsLightTheme=action.payload
         }
     }
     

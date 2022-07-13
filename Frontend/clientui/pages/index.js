@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
-import { Grid } from "@mui/material";
+import { Grid, ThemeProvider, createTheme, Box, Paper } from "@mui/material";
 import Link from "next/link";
 import Header from "../Components/Header/Header";
 import LeftSideBar from "../Components/LeftSideBar/LeftSideBar";
@@ -11,25 +11,27 @@ import { useEffect } from "react";
 const axios = require("axios").default;
 export default function Home({ data, movielist }) {
   const dispatch = useDispatch();
-  console.log(data,movielist)
+  console.log(data, movielist);
+  
   // const { Catologe, TabIsClose } = useSelector((state) => state);
   // dispatch(action.SetCatologe(data.data));
   // dispatch(action.SetCurMovieList(movielist))
-  // console.log(Catologe,18)
+  // console.log(Catologe,18)s
 
   return (
     <>
       <div>
         <Header />
-        <Grid container spacing={3}>
-          <LeftSideBar ListCatologe={data.data} />
-          <RightSideBar itemsArr={movielist} />
-        </Grid>
+        
+          <Grid container spacing={3}>
+            <LeftSideBar ListCatologe={data.data} />
+            <RightSideBar itemsArr={movielist} />
+          </Grid>
+        
       </div>
     </>
   );
 }
-
 
 export async function getStaticProps(context) {
   // const param = new URLSearchParams(location.search).get("page")
@@ -49,7 +51,6 @@ export async function getStaticProps(context) {
     },
   };
 }
-
 
 // const $ = document.querySelector.bind(document);
 
