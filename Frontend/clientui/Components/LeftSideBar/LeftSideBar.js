@@ -14,9 +14,10 @@ function LeftSideBar({ListCatologe}) {
   const Direct = function (end) {
     router.push(`/${end}`);
   };
+  const SetEpiso
   return (
    
-    <Grid  item lg={3} md={3}>
+    <Grid className={`${style}`}  item lg={3} md={3}>
       <div className="hidden-sm hidden-xs">
         <ul>
           {ListCatologe.length > 0 && ListCatologe
@@ -32,7 +33,9 @@ function LeftSideBar({ListCatologe}) {
                     key={item.name}
                   >
                     <a>
-                      <p>{item.name ? item.name : ""}</p>
+                      <p
+                      
+                       >{item.name ? item.name : ""}</p>
                     </a>
                   </li>
                 );

@@ -14,6 +14,7 @@ function MoviePageDetail({ movie, episodes }) {
   });
   console.log(proper);
   console.log(proper.CurListEpisodes[proper.CurEpisodes].link_embed, proper);
+
   return (
     <>
       <Header />
@@ -36,16 +37,34 @@ function MoviePageDetail({ movie, episodes }) {
               src={proper.CurListEpisodes[proper.CurEpisodes].link_embed}
             />
             <Grid container spacing={3}>
-              <Grid
-                style={{ backgroundColor: "springgreen", color: "#fff" }}
-                item
-                lg={1}
-                md={1}
-                sm={1}
-                xs={1}
-              >
-                1
-              </Grid>
+              {proper.CurListEpisodes && proper.CurListEpisodes.length >= 0
+                ? proper.CurListEpisodes.map((item, idx) => {
+                    return (
+                      <Grid
+                        style={{
+                          backgroundColor: "springgreen",
+                          color: "#fff",
+                        }}
+                        item
+                        lg={1}
+                        md={1}
+                        sm={1}
+                        xs={1}
+                      >
+                        <p
+                          onClick={() => {
+                            SetProper({
+                              ...proper,
+                              CurEpisodes: idx,
+                            });
+                          }}
+                        >
+                          {idx + 1}
+                        </p>
+                      </Grid>
+                    );
+                  })
+                : null}
             </Grid>
           </Grid>
           <Grid item xl={4} lg={4} md={3}>
